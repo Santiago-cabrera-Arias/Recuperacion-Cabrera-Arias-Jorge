@@ -47,7 +47,18 @@ public class VistaElectrodomestico {
         int resolucion = entrada.nextInt();
         television.setResolucion(resolucion);
         System.out.print("Ingrese si tiene HDMI del televisor (Si/No): ");
-        String puerto = entrada.next();
+        
+        
+        String hdmi = entrada.next();
+        
+        boolean bandera;
+        
+        if(hdmi.equalsIgnoreCase("si")){
+            bandera = true;
+        }else{
+            bandera = false;
+        }
+        television.setPuertoHDMI(bandera);
         
         return television;
     }
@@ -81,6 +92,8 @@ public class VistaElectrodomestico {
         lavadora.setCarga(carga);
         return lavadora;
 
+        
+        
     }
 
     public void listaraLavadora(List<Lavadora> lista) {
