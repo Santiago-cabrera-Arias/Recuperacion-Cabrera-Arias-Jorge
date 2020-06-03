@@ -4,53 +4,72 @@ import ec.edu.ups.ielectrodomesticodao.IElectrodomesticoDao;
 import ec.edu.ups.modelo.Electrodomestico;
 import ec.edu.ups.modelo.Lavadora;
 import ec.edu.ups.modelo.Television;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class ElectrodomesticoDAO implements IElectrodomesticoDao{
+public class ElectrodomesticoDAO implements IElectrodomesticoDao {
 
-private SortedSet<Electrodomestico> lista;
+    private SortedSet<Electrodomestico> lista;
 
     public ElectrodomesticoDAO() {
-        
-        lista = new TreeSet(); 
+
+        lista = new TreeSet();
 
     }
 
     @Override
-    public Television create(Television television) {
-        
+    public void create(Television television) {
+
         lista.add(television);
-    
-        return null;
-        
+
     }
 
     @Override
-    public Lavadora create(Lavadora lavadora) {
-        
+    public void create(Lavadora lavadora) {
+
         lista.add(lavadora);
-        
-        return null;
-        
+
     }
 
     @Override
     public List<Lavadora> listarLavadora() {
-      
-        
-        
+
+        List<Lavadora> listaLavadora = new ArrayList<>();
+
+        Iterator<Electrodomestico> it = lista.iterator();
+
+        while (it.hasNext()) {
+            Electrodomestico elec = it.next();
+            if (elec instanceof Lavadora) {
+                Lavadora lavadora = (Lavadora) elec;
+                listaLavadora.add(lavadora);
+
+            }
+
+        }
+
+        return listaLavadora;
     }
 
     @Override
     public List<Television> listarTelevision() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Television> listaTelevision = new ArrayList<>();
+
+        Iterator<Electrodomestico> it = lista.iterator();
+        while (it.hasNext()) {
+            Electrodomestico elec = it.next();
+            if (elec instanceof Television) {
+                Television television = (Television) elec;
+                listaTelevision.add(television);
+
+            }
+        }
+
+        return listaTelevision;
     }
-
-
-
-
-
 
 }

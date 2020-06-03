@@ -1,4 +1,3 @@
-
 package ec.edu.ups.ielectrodomesticodao;
 
 import ec.edu.ups.modelo.Lavadora;
@@ -11,11 +10,13 @@ import java.util.List;
  */
 public interface IElectrodomesticoDao {
 
-       //CRUD
-    
-    public Television create(Television television);
-    public Lavadora create(Lavadora lavadora);
+    //CRUD
+    public void create(Television television);
+
+    public void create(Lavadora lavadora);
+
     List<Lavadora> listarLavadora();
+
     List<Television> listarTelevision();
-    
+
 }

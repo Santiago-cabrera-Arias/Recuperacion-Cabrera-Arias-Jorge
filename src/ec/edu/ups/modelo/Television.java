@@ -15,16 +15,9 @@ public class Television extends Electrodomestico{
         this.resolucion = resolucion;
         this.puertoHDMI = puertoHDMI;
     }
-
-    public Television(int resolucion, boolean puertoHDMI, int codigo) {
-        super(codigo);
-        this.resolucion = resolucion;
-        this.puertoHDMI = puertoHDMI;
-    }
-
-    public Television(int resolucion, boolean puertoHDMI) {
-        this.resolucion = resolucion;
-        this.puertoHDMI = puertoHDMI;
+    
+    public Television(){
+        
     }
 
     public int getResolucion() {
@@ -74,14 +67,25 @@ public class Television extends Electrodomestico{
 
     public double obtenerSalaioFinal(){
         
+        double precio = 0;
         
-        return 0;
+        if (resolucion > 40){
+            
+            precio = (precioBase*0.30);
+            
+        }else if(puertoHDMI == true){
+            
+            precio = 50;
+            
+        }
+        
+        return super.precioBase+precio;
     } 
     
     
     @Override
     public String toString() {
-        return "Television{" + "resolucion=" + resolucion + ", puertoHDMI=" + puertoHDMI + '}';
+        return super.toString()+ "Television{" +  "resolucion= " + resolucion + ", puertoHDMI= " + puertoHDMI +" Precio Final "+obtenerPrecioFinal()+ '}';
     }
 
 }

@@ -5,7 +5,7 @@ package ec.edu.ups.modelo;
  * @author santi
  */
 public class Lavadora extends Electrodomestico {
-    
+
     private int carga;
 
     public Lavadora(int carga, int codigo, String descripcion, double precioBase, String color, char consumoEnergetico, int peso) {
@@ -13,9 +13,8 @@ public class Lavadora extends Electrodomestico {
         this.carga = carga;
     }
 
-    public Lavadora(int carga, int codigo) {
-        super(codigo);
-        this.carga = carga;
+    public Lavadora() {
+
     }
 
     public Lavadora(int carga) {
@@ -29,8 +28,6 @@ public class Lavadora extends Electrodomestico {
     public void setCarga(int carga) {
         this.carga = carga;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -57,23 +54,24 @@ public class Lavadora extends Electrodomestico {
         return true;
     }
 
-    public double obtenerPrecioFinal(){
-        
-        if(){
-            
-        }else if(){
-            
-            
+    //Obtener precio final.
+    @Override
+    public double obtenerPrecioFinal() {
+
+        double precio = super.precioBase + super.obtenerPrecioFinal();
+
+        if (carga > 30) {
+
+            precio = 50;
+
         }
-        
-        
-        return 0;
+
+        return precio;
     }
-    
 
     @Override
     public String toString() {
-        return "Lavadora{" + "carga=" + carga + '}';
+        return super.toString()+ "Lavadora{" + "carga= " + carga + " Precio Final " + obtenerPrecioFinal() + '}';
     }
- 
+
 }
